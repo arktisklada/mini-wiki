@@ -7,7 +7,7 @@ const redis = promiseRedis.createClient();
 const LATEST_PLANE_CRASH_REDIS_KEY = 'Latest_plane_crash';
 const LATEST_PLANE_CRASH_DIR = __dirname + '/pages/Latest_plane_crash/';
 
-function fetchLastestPlaneCrashRevision() {
+function getLastestPlaneCrashRevision() {
   return redis.get('Latest_plane_crash').then(function(revision) {
     var files;
 
@@ -22,7 +22,7 @@ function fetchLastestPlaneCrashRevision() {
 }
 
 function fetchLastestPlaneCrash() {
-  return fetchLastestPlaneCrashRevision().then(function(revision) {
+  return getLastestPlaneCrashRevision().then(function(revision) {
     var filename = LATEST_PLANE_CRASH_DIR + revision;
     return fs.readFileSync(filename).toString();
   });
@@ -36,6 +36,6 @@ function saveLatestPlaneCrash(newRevision, content) {
 
 module.exports = {
   fetch: fetchLastestPlaneCrash,
-  latestRevision: fetchLastestPlaneCrashRevision,
+  getLatestRevision: getLastestPlaneCrashRevision,
   write: saveLatestPlaneCrash
 };

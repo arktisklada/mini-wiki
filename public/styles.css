@@ -1,0 +1,115 @@
+html,
+body {
+  background-color: #eee;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 20px;
+}
+body * {
+  box-sizing: border-box;
+  display: block;
+  font-family: Garamond;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2 {
+  font-weight: bold;
+  margin-bottom: 0.25em;
+}
+
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+a,
+a:link,
+a:hover,
+a:active,
+a:visited {
+  color: #1133dd;
+  cursor: pointer;
+  display: inline;
+  outline: none;
+  text-decoration: none;
+}
+a:hover {
+  color: #11aadd;
+}
+
+input[type=submit],
+button {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 0.25em 0.5em;
+}
+textarea {
+  background-color: #fafafa;
+  font-size: 20px;
+  min-height: 300px;
+  margin-bottom: 1em;
+  padding: 0.25em;
+  resize: none;
+  width: 100%;
+}
+
+.row {
+  margin: 1em 0;
+}
+
+.column {
+  display: block;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+.tagline {
+  font-style: italic;
+  margin-bottom: 2em;
+}
+
+.article-content {
+  margin: 1em 1em 2em;
+}
+
+.contribute {
+  font-size: 0.9em;
+}
+
+@media (min-width:769px) {
+  .column {
+    padding: 0 1em;
+  }
+}
+
+@media (min-width:1024px) {
+  .column {
+    padding: 0 5em;
+    width: 60em;
+  }
+}
+
+@media(max-width:768px) {
+  body,
+  input,
+  button,
+  textarea {
+    font-size: 16px;
+  }
+}
