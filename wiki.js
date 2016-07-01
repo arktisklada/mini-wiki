@@ -1,8 +1,8 @@
 var express = require('express'),
     app = express(),
-    requestLogger = require('./requestLogger'),
-    delayedRequestSimulator = require('./delayedRequestSimulator'),
-    latestPlaneCrash = require('./latestPlaneCrash');
+    requestLogger = require('./modules/requestLogger'),
+    delayedRequestSimulator = require('./modules/delayedRequestSimulator'),
+    latestPlaneCrash = require('./articles/latestPlaneCrash');
 
 
 app.get('/', function(_, response) {

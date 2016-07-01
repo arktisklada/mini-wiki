@@ -5,7 +5,7 @@ var fs = require('fs'),
 const redis = promiseRedis.createClient();
 
 const LATEST_PLANE_CRASH_REDIS_KEY = 'Latest_plane_crash';
-const LATEST_PLANE_CRASH_DIR = __dirname + '/Latest_plane_crash/';
+const LATEST_PLANE_CRASH_DIR = __dirname + '/pages/Latest_plane_crash/';
 
 function fetchLastestPlaneCrashRevision() {
   return redis.get('Latest_plane_crash').then(function(revision) {
