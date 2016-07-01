@@ -23,6 +23,12 @@ function requestLogger(request, _, next) {
 }
 
 function fetchLastestPlaneCrash() {
+  var revision,
+      dir = __dirname + '/Latest_plane_crash/',
+      files = fs.readdirSync(dir);
+
+  revision = files.sort()[files.length - 1];
+  return fs.readFileSync(dir + revision).toString();
 }
 
 app.use(requestLogger);
@@ -33,16 +39,8 @@ app.get('/', function(_, response) {
 });
 
 app.get('/Latest_plane_crash', function(_, response) {
-  var revision,
-      latestPlaneCrash,
-      dir = __dirname + '/Latest_plane_crash/',
-      files = fs.readdirSync(dir);
-
-  revision = files.sort()[files.length - 1];
-  latestPlaneCrash = fs.readFileSync(dir + revision).toString();
-
   response.setHeader('Cache-Control', 'public, max-age=30');
-  response.send(latestPlaneCrash);
+  response.send(fetchLastestPlaneCrash());
 });
 
 app.put('/Latest_plane_crash', function(request, response) {
