@@ -15,5 +15,6 @@ html(lang="en")
         p= "Please edit the article with up-to-date information:"
 
         form(action="/Latest_plane_crash" method="POST")
+          input(type="hidden" name="revision" value=revision)
           textarea(name="content")= content
           button(type="submit")= "Submit"

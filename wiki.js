@@ -19,9 +19,11 @@ app.get('/Latest_plane_crash', function(_, response) {
 
 app.get('/Latest_plane_crash/edit', function(_, response) {
   response.setHeader('Cache-Control', 'nocache');
-  latestPlaneCrash.fetch().then(function(fileData) {
-    response.render('edit', { title: 'Latest Plane Crash', content: fileData });
-  });
+  latestPlaneCrash.getLatestRevision().then(function(latestRevision) {
+    latestPlaneCrash.fetch().then(function(fileData) {
+      response.render('edit', { title: 'Latest Plane Crash', content: fileData, revision: latestRevision });
+    });
+  })
 });
 
 app.post('/Latest_plane_crash', function(request, response) {

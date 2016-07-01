@@ -29,7 +29,7 @@ function fetchLastestPlaneCrash() {
 }
 
 function saveLatestPlaneCrash(newRevision, content) {
-  newRevisionFile = LATEST_PLANE_CRASH_DIR + newRevision + '.html';
+  newRevisionFile = LATEST_PLANE_CRASH_DIR + newRevision;
   fs.writeFileSync(newRevision, content);
   return redis.set(LATEST_PLANE_CRASH_REDIS_KEY, newRevision);
 }
