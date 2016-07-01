@@ -1,5 +1,7 @@
 var express = require('express'),
     app = express(),
+    bodyParser = require('body-parser'),
+    urlencodedParser = bodyParser.urlencoded({extended: false}),
     requestLogger = require('./modules/requestLogger'),
     delayedRequestSimulator = require('./modules/delayedRequestSimulator'),
     latestPlaneCrash = require('./articles/latestPlaneCrash');
@@ -26,18 +28,14 @@ app.get('/Latest_plane_crash/edit', function(_, response) {
   })
 });
 
-app.post('/Latest_plane_crash', function(request, response) {
+app.post('/Latest_plane_crash', urlencodedParser, function(request, response) {
   latestPlaneCrash.getLatestRevision().then(function(latestRevision) {
     if (request.body.revision == latestRevision) {
-      latestPlaneCrash.write(Date.now(), request.body.content)
-        .then(function() {
-          res.redirect(request.url);
-        });
+      latestPlaneCrash.write(Date.now(), request.body.content).then(function() {
+        response.redirect('/Latest_plane_crash');
+      });
     } else {
-      res.send(JSON.stringify({
-        message: 'Please update a more up-to-date version',
-        content: fetchLastestPlaneCrash()
-      }));
+      response.redirect('/Latest_plane_crash/edit');
     }
   });
 });
