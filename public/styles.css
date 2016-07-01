@@ -13,6 +13,7 @@ body * {
   font-family: Garamond;
   font-weight: normal;
   margin: 0;
+  outline: none;
   padding: 0;
 }
 
@@ -57,12 +58,20 @@ a:hover {
   color: #11aadd;
 }
 
+label {
+  font-weight: bold;
+  padding-bottom: 0.5em;
+}
 input[type=submit],
 button {
+  border: 1px solid #999;
+  background-color: #fafafa;
   cursor: pointer;
   font-weight: bold;
   font-size: 20px;
-  padding: 0.25em 0.5em;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 textarea {
   background-color: #fafafa;
@@ -95,6 +104,14 @@ textarea {
 
 .contribute {
   font-size: 0.9em;
+}
+
+.flash-message {
+  background-color: #ee3311;
+  border-radius: 0.25em;
+  color: #fff;
+  margin-bottom: 1em;
+  padding: 0.5em 1em;
 }
 
 @media (min-width:769px) {

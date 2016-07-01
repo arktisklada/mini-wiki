@@ -25,7 +25,7 @@ app.get('/Latest_plane_crash/edit', function(_, response) {
     latestPlaneCrash.fetch().then(function(fileData) {
       response.render('edit', { title: 'Latest Plane Crash', content: fileData, revision: latestRevision });
     });
-  })
+  });
 });
 
 app.post('/Latest_plane_crash', urlencodedParser, function(request, response) {
@@ -35,7 +35,11 @@ app.post('/Latest_plane_crash', urlencodedParser, function(request, response) {
         response.redirect('/Latest_plane_crash');
       });
     } else {
-      response.redirect('/Latest_plane_crash/edit');
+      latestPlaneCrash.getLatestRevision().then(function(latestRevision) {
+        latestPlaneCrash.fetch().then(function(fileData) {
+          response.render('edit', { title: 'Latest Plane Crash', flashMessage: 'Please edit a more up-to-date version', content: fileData, revision: latestRevision });
+        });
+      });
     }
   });
 });
